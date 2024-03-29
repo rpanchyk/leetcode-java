@@ -2,23 +2,23 @@ package com.leetcode.solutions;
 
 import java.math.BigInteger;
 
-public class N008_StringToIntegerAtoi {
+public class N0008_StringToIntegerAtoi {
 
     public static void main(String[] args) {
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("42"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("   -42"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("4193 with words"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("words and 987"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("-91283472332"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("+1"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("+-12"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("-+12"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("   +0 123"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("-5-"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("-13+8"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("  +  413"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("000+85"));
-        System.out.println(new N008_StringToIntegerAtoi().myAtoi("00000-42a1234"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("42"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("   -42"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("4193 with words"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("words and 987"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("-91283472332"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("+1"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("+-12"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("-+12"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("   +0 123"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("-5-"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("-13+8"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("  +  413"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("000+85"));
+        System.out.println(new N0008_StringToIntegerAtoi().myAtoi("00000-42a1234"));
     }
 
     public int myAtoi(String s) {

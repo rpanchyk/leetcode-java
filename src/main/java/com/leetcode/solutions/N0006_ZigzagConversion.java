@@ -1,11 +1,11 @@
 package com.leetcode.solutions;
 
-public class N006_ZigzagConversion {
+public class N0006_ZigzagConversion {
 
     public static void main(String[] args) {
-        System.out.println(new N006_ZigzagConversion().convert("PAYPALISHIRING", 3));
-        System.out.println(new N006_ZigzagConversion().convert("A", 2));
-        System.out.println(new N006_ZigzagConversion().convert("AB", 1));
+        System.out.println(new N0006_ZigzagConversion().convert("PAYPALISHIRING", 3));
+        System.out.println(new N0006_ZigzagConversion().convert("A", 2));
+        System.out.println(new N0006_ZigzagConversion().convert("AB", 1));
     }
 
     public String convert(String s, int numRows) {

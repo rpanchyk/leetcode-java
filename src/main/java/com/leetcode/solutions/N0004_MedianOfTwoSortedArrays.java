@@ -3,11 +3,11 @@ package com.leetcode.solutions;
 import java.util.*;
 import java.util.stream.IntStream;
 
-public class N004_MedianOfTwoSortedArrays {
+public class N0004_MedianOfTwoSortedArrays {
 
     public static void main(String[] args) {
-        System.out.println(new N004_MedianOfTwoSortedArrays().findMedianSortedArrays(new int[]{1, 3}, new int[]{2}));
-        System.out.println(new N004_MedianOfTwoSortedArrays().findMedianSortedArrays(new int[]{1, 2}, new int[]{3, 4}));
+        System.out.println(new N0004_MedianOfTwoSortedArrays().findMedianSortedArrays(new int[]{1, 3}, new int[]{2}));
+        System.out.println(new N0004_MedianOfTwoSortedArrays().findMedianSortedArrays(new int[]{1, 2}, new int[]{3, 4}));
     }
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {

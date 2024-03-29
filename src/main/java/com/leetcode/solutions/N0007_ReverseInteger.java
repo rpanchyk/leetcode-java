@@ -1,13 +1,13 @@
 package com.leetcode.solutions;
 
-public class N007_ReverseInteger {
+public class N0007_ReverseInteger {
 
     public static void main(String[] args) {
-        System.out.println(new N007_ReverseInteger().reverse(123));
-        System.out.println(new N007_ReverseInteger().reverse(-123));
-        System.out.println(new N007_ReverseInteger().reverse(120));
-        System.out.println(new N007_ReverseInteger().reverse(1534236469));
-        System.out.println(new N007_ReverseInteger().reverse(10));
+        System.out.println(new N0007_ReverseInteger().reverse(123));
+        System.out.println(new N0007_ReverseInteger().reverse(-123));
+        System.out.println(new N0007_ReverseInteger().reverse(120));
+        System.out.println(new N0007_ReverseInteger().reverse(1534236469));
+        System.out.println(new N0007_ReverseInteger().reverse(10));
     }
 
     public int reverse(int x) {

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class N003_LongestSubstringWithoutRepeatingCharacters {
+public class N0003_LongestSubstringWithoutRepeatingCharacters {
 
     public static void main(String[] args) {
-        System.out.println(new N003_LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("abcabcbb"));
-        System.out.println(new N003_LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("bbbbb"));
-        System.out.println(new N003_LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("pwwkew"));
+        System.out.println(new N0003_LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(new N0003_LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("bbbbb"));
+        System.out.println(new N0003_LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("pwwkew"));
     }
 
     public int lengthOfLongestSubstring(String s) {

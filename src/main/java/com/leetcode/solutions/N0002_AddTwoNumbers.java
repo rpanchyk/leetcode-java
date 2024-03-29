@@ -1,6 +1,6 @@
 package com.leetcode.solutions;
 
-public class N002_AddTwoNumbers {
+public class N0002_AddTwoNumbers {
 
     public static class ListNode {
         int val;
@@ -45,7 +45,7 @@ public class N002_AddTwoNumbers {
             )
         );
 
-        System.out.println(new N002_AddTwoNumbers().addTwoNumbers(l1, l2));
+        System.out.println(new N0002_AddTwoNumbers().addTwoNumbers(l1, l2));
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

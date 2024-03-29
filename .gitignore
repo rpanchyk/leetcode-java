@@ -1,4 +1,6 @@
+# IDEs
 .idea/
 *.iml
 
+# Files
 target/

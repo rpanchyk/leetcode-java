@@ -1,11 +1,11 @@
 package com.leetcode.solutions;
 
-public class N009_PalindromeNumber {
+public class N0009_PalindromeNumber {
 
     public static void main(String[] args) {
-        System.out.println(new N009_PalindromeNumber().isPalindrome(121));
-        System.out.println(new N009_PalindromeNumber().isPalindrome(-121));
-        System.out.println(new N009_PalindromeNumber().isPalindrome(10));
+        System.out.println(new N0009_PalindromeNumber().isPalindrome(121));
+        System.out.println(new N0009_PalindromeNumber().isPalindrome(-121));
+        System.out.println(new N0009_PalindromeNumber().isPalindrome(10));
     }
 
     public boolean isPalindrome(int x) {
