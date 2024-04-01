@@ -1,18 +1,14 @@
 package com.leetcode.solutions;
 
-import java.io.*;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.leetcode.utils.FileUtils;
+
+import static com.leetcode.utils.AssertUtils.assertThat;
 
 public class N0011_ContainerWithMostWater {
 
     public static void main(String[] args) {
-        N0011_ContainerWithMostWater p = new N0011_ContainerWithMostWater();
-
-        System.out.println(p.maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}));
-        System.out.println(p.maxArea(toArray()));
+        assertThat(new N0011_ContainerWithMostWater().maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}), 49);
+        assertThat(new N0011_ContainerWithMostWater().maxArea(toArrayFromFile("N0011.txt")), 721737540);
     }
 
     public int maxArea(int[] height) {
@@ -50,24 +46,13 @@ public class N0011_ContainerWithMostWater {
         return result;
     }
 
-    private static int[] toArray() {
-        Path path;
-        try {
-            path = Path.of(ClassLoader.getSystemResource("N0011.txt").toURI());
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
+    private static int[] toArrayFromFile(String file) {
+        String content = FileUtils.read(file);
+        String[] split = content.split(",");
+        int[] result = new int[split.length];
+        for (int i = 0; i < split.length; i++) {
+            result[i] = Integer.parseInt(split[i].trim());
         }
-
-        try (BufferedReader reader = Files.newBufferedReader(path)) {
-            String line = reader.readLine();
-            String[] split = line.split(",");
-            int[] result = new int[split.length];
-            for (int i = 0; i < split.length; i++) {
-                result[i] = Integer.parseInt(split[i].trim());
-            }
-            return result;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return result;
     }
 }

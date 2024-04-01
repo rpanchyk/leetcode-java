@@ -1,6 +1,7 @@
 package com.leetcode.solutions;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class N0004_MedianOfTwoSortedArrays {
@@ -15,16 +16,16 @@ public class N0004_MedianOfTwoSortedArrays {
         int n = nums2.length;
 
         List<Integer> list = IntStream.concat(Arrays.stream(nums1), Arrays.stream(nums2))
-                .boxed()
-                .sorted()
-                .toList();
+            .boxed()
+            .sorted()
+            .toList();
 
 
         boolean isEven = (m + n) % 2 == 0;
         int index = isEven ? (m + n) / 2 - 1 : (m + n + 1) / 2 - 1;
 
         return isEven
-                ? (list.get(index) + list.get(index + 1)) / 2.0
-                : list.get(index);
+            ? (list.get(index) + list.get(index + 1)) / 2.0
+            : list.get(index);
     }
 }

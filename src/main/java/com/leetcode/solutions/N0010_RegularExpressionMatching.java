@@ -1,6 +1,6 @@
 package com.leetcode.solutions;
 
-import static com.leetcode.solutions.Assert.assertThat;
+import static com.leetcode.utils.AssertUtils.assertThat;
 
 public class N0010_RegularExpressionMatching {
 

@@ -1,6 +1,6 @@
-package com.leetcode.solutions;
+package com.leetcode.utils;
 
-public class Assert {
+public class AssertUtils {
 
     static int counter = 0;
 
