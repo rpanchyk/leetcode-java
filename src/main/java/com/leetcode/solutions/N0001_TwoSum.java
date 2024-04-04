@@ -28,18 +28,10 @@ public class N0001_TwoSum {
                 r = new int[]{nums[left], nums[right]};
                 break;
             } else {
-                if (target > 0) {
-                    if (value > target) {
-                        right--;
-                    } else {
-                        left++;
-                    }
+                if (value > target) {
+                    right--;
                 } else {
-                    if (value > target) {
-                        right--;
-                    } else {
-                        left++;
-                    }
+                    left++;
                 }
             }
         }
