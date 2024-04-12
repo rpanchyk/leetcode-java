@@ -21,7 +21,7 @@ public class AssertUtils {
 
         System.out.println(++counter + " => " + actual);
         if (!Objects.equals(actual, expected)) {
-            throw new RuntimeException("Actual '" + actual + "', but expected '" + expected + "' :(");
+            throw new RuntimeException("Expected '" + expected + "', but actual '" + actual + "' :(");
         }
     }
 }
