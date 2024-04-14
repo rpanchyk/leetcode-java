@@ -1,9 +1,6 @@
 package com.leetcode.solutions;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static com.leetcode.utils.AssertUtils.assertThat;
 
@@ -27,7 +24,13 @@ public class N0022_GenerateParentheses {
         );
     }
 
+    private Map<Integer, List<String>> cache = new HashMap<>();
+
     public List<String> generateParenthesis(int n) {
+        if (cache.containsKey(n)) {
+            return cache.get(n);
+        }
+
         Set<String> result = new HashSet<>();
 
         char[] arr = ("(".repeat(n) + ")".repeat(n)).toCharArray();
@@ -98,7 +101,11 @@ public class N0022_GenerateParentheses {
             leftN--;
         }
 
-        return result.stream().toList();
+        List<String> list = result.stream().toList();
+        if (!cache.containsKey(n)) {
+            cache.put(n, list);
+        }
+        return list;
     }
 
     private boolean isValid(char[] arr) {
