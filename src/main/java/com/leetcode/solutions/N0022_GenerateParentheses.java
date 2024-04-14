@@ -1,7 +1,7 @@
 package com.leetcode.solutions;
 
 import java.util.Arrays;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,34 +14,35 @@ public class N0022_GenerateParentheses {
             List.of("()")
         );
         assertThat(new N0022_GenerateParentheses().generateParenthesis(2),
-            List.of("(())", "()()")
+            List.of("()()", "(())")
         );
         assertThat(new N0022_GenerateParentheses().generateParenthesis(3),
-            List.of("((()))", "()()()", "(()())", "()(())", "(())()")
+            List.of("()()()", "(()())", "()(())", "((()))", "(())()")
         );
         assertThat(new N0022_GenerateParentheses().generateParenthesis(4),
-            List.of("(((())))", "()(())()", "()()()()", "((()()))", "(())(())", "()((()))", "((()))()", "(()()())", "()(()())", "(()())()", "()()(())", "(()(()))", "(())()()", "((())())")
+            List.of("()()()()", "(()())()", "(()(()))", "()()(())", "(((())))", "(())()()", "(())(())", "()((()))", "()(())()", "()(()())", "(()()())", "((()()))", "((()))()", "((())())")
         );
         assertThat(new N0022_GenerateParentheses().generateParenthesis(5),
-            List.of("((((()))))", "(((()())))", "(((())()))", "(((()))())", "(((())))()", "((()(())))", "((()()()))", "((()())())", "((()()))()", "((())(()))", "((())()())", "((())())()", "((()))(())", "((()))()()", "(()((())))", "(()(()()))", "(()(())())", "(()(()))()", "(()()(()))", "(()()()())", "(()()())()", "(()())(())", "(()())()()", "(())((()))", "(())(()())", "(())(())()", "(())()(())", "(())()()()", "()(((())))", "()((()()))", "()((())())", "()((()))()", "()(()(()))", "()(()()())", "()(()())()", "()(())(())", "()(())()()", "()()((()))", "()()(()())", "()()(())()", "()()()(())", "()()()()()")
+            List.of("()(())()()", "(((()))())", "((()(())))", "((()))(())", "()()(()())", "(()(()))()", "()(()()())", "(()(()()))", "()((()))()", "()((()()))", "(((()())))", "(()()()())", "()()()()()", "((()())())", "(())()()()", "()(()())()", "(()(())())", "()(()(()))", "(((())))()", "(((())()))", "(()())(())", "()(((())))", "(())(())()", "(()((())))", "(())((()))", "()(())(())", "()()(())()", "()()((()))", "((()))()()", "((())()())", "((((()))))", "((()()()))", "(()()())()", "(()()(()))", "()((())())", "(())()(())", "((()()))()", "((())())()", "((())(()))", "()()()(())", "(())(()())", "(()())()()")
         );
     }
 
     public List<String> generateParenthesis(int n) {
-        Set<String> result = new LinkedHashSet<>();
+        Set<String> result = new HashSet<>();
 
         char[] arr = ("(".repeat(n) + ")".repeat(n)).toCharArray();
 
+        // Algo:
         // symmetric
         // forward: side -> center 1/4
         // reverse: center -> side 1/4
 
-        // asymmetric (while n > 2)
-        // forward: () + self(n-2)
-        // reverse: self(n-2) + ()
+        // asymmetric (while leftN > 0)
+        // forward: () + self(leftN)
+        // reverse: self(leftN) + ()
 
-        // reduce envelope pair (while n > 2)
-        // ( + self(n-2) + )
+        // reduce envelope pair (while leftN > 0)
+        // ( + self(leftN) + )
 
         // def
         result.add(String.valueOf(arr));
@@ -52,12 +53,9 @@ public class N0022_GenerateParentheses {
             chars[i] = flip(chars[i]);
             chars[arr.length - 1 - i] = flip(chars[arr.length - 1 - i]);
 
-            if (!isValid(chars)) {
-                //System.out.println("! invalid: " + Arrays.toString(chars));
-                continue;
+            if (isValid(chars)) {
+                result.add(String.valueOf(chars));
             }
-
-            result.add(String.valueOf(chars));
         }
 
         // s r
@@ -66,76 +64,36 @@ public class N0022_GenerateParentheses {
             chars[i] = flip(chars[i]);
             chars[arr.length - 1 - i] = flip(chars[arr.length - 1 - i]);
 
-            if (!isValid(chars)) {
-                //System.out.println("!! invalid: " + Arrays.toString(chars));
-                continue;
+            if (isValid(chars)) {
+                result.add(String.valueOf(chars));
             }
-
-            result.add(String.valueOf(chars));
         }
 
         // as
         int leftN = n - 1;
         while (leftN > 0) {
-            List<String> strings1 = generateParenthesis(leftN);
-            List<String> strings2 = generateParenthesis(n - leftN);
+            List<String> lefts = generateParenthesis(leftN);
+            List<String> rights = generateParenthesis(n - leftN);
 
-            for (String s : strings1) {
-                for (String s2 : strings2) {
-                    String e1 = s2 + s;
+            String opened = "(".repeat(n - leftN);
+            String closed = ")".repeat(n - leftN);
+
+            for (String left : lefts) {
+                for (String right : rights) {
+                    String e1 = right + left;
                     if (isValid(e1.toCharArray())) {
                         result.add(e1);
                     }
-                    String e2 = s + s2;
+                    String e2 = left + right;
                     if (isValid(e2.toCharArray())) {
                         result.add(e2);
                     }
                 }
 
-                String e3 = "(".repeat(n - leftN) + s + ")".repeat(n - leftN);
+                String e3 = opened + left + closed;
                 if (isValid(e3.toCharArray())) {
                     result.add(e3);
                 }
-
-
-//                // as f
-//                String e1 = "()".repeat(n - leftN) + s;
-//                if (!isValid(e1.toCharArray())) {
-//                    //System.out.println("!!! invalid: " + e1);
-//                } else {
-//                    result.add(e1);
-//                }
-//
-//                // as r
-//                String e2 = s + "()".repeat(n - leftN);
-//                if (!isValid(e2.toCharArray())) {
-//                    //System.out.println("!!!! invalid: " + e2);
-//                } else {
-//                    result.add(e2);
-//                }
-//
-//                // r e
-//                String e3 = "(".repeat(n - leftN) + s + ")".repeat(n - leftN);
-//                if (!isValid(e3.toCharArray())) {
-//                    //System.out.println("!!!!! invalid: " + e3);
-//                } else {
-//                    result.add(e3);
-//                }
-//
-//                /////////////////
-//                String e4 = "(".repeat(n - leftN) + ")".repeat(n - leftN) + s;
-//                if (!isValid(e4.toCharArray())) {
-//                    //System.out.println("!!! invalid: " + e1);
-//                } else {
-//                    result.add(e4);
-//                }
-//
-//                String e5 = s+"(".repeat(n - leftN) + ")".repeat(n - leftN);
-//                if (!isValid(e5.toCharArray())) {
-//                    //System.out.println("!!! invalid: " + e1);
-//                } else {
-//                    result.add(e5);
-//                }
             }
             leftN--;
         }
